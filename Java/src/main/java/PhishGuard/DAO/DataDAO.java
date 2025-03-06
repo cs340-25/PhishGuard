@@ -35,7 +35,7 @@ public class DataDAO {
                 //sets the values of the data based on the values in each column in the database
                 DataTO data = new DataTO();
                 data.setEmail(rs.getString("email"));
-                data.setResult(rs.getBool("result"));
+                data.setResult(rs.getBoolean("result"));
                 data.setTimestamp(rs.getString("timestamp"));
                 data.setUsername(rs.getString("username"));
 
@@ -56,7 +56,7 @@ public class DataDAO {
                 //sets the values of the data based on the values in each column in the database
                 DataTO data = new DataTO();
                 data.setEmail(rs.getString("email"));
-                data.setResult(rs.getBool("result"));
+                data.setResult(rs.getBoolean("result"));
                 data.setTimestamp(rs.getString("timestamp"));
                 data.setUsername(rs.getString("username"));
 

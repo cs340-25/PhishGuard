@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 public class DataTO {
     private String username;
     private String email;
-    private bool result;
+    private boolean result;
     private String timestamp;
 
     
-    public DataTO(String username, String email, bool result, String timestamp) {
+    public DataTO(String username, String email, boolean result, String timestamp) {
       this.username = username;
       this.email = email;
       this.result = result;
@@ -43,11 +43,11 @@ public class DataTO {
         this.email = email;
     }
 
-    public bool getResult() {
+    public boolean getResult() {
       return result;
     }
     
-    public void setResult(bool result) {
+    public void setResult(boolean result) {
       this.result = result;
     }
 
@@ -58,4 +58,4 @@ public class DataTO {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
+  }
