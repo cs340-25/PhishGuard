@@ -18,13 +18,6 @@ public class DataController {
     @Autowired
     private DataSO dataSO;
 
-    //sets the path to /datas/viewLogs and retrieves the normal logs for all users
-    @GetMapping("/viewLogs")
-    public List<DataTO> getData() {
-        return dataSO.getData();
-    }
-
-
     //sets the path to /datas/userLogs and retrieves the normal logs for the signed in user
     @GetMapping("/userLogs")
     public List<DataTO> getUserData() {

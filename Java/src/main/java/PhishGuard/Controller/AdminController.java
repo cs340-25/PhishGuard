@@ -1,6 +1,8 @@
 package PhishGuard.Controller;
 
 import PhishGuard.SO.UserSO;
+import PhishGuard.SO.DataSO;
+import PhishGuard.TO.DataTO;
 import PhishGuard.TO.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private UserSO userSO;
+    @Autowired
+    private DataSO dataSO;
 
     //sets the path to /admin/getAllUsers and returns all user information
     @GetMapping("/getAllUsers")
@@ -31,5 +35,11 @@ public class AdminController {
     public String deleteUserByUsername(@PathVariable String username) {
         userSO.deleteUserByUsername(username);
         return "User with username " + username + " deleted.";
+    }
+
+    //sets the path to /datas/viewLogs and retrieves the normal logs for all users
+    @GetMapping("/viewLogs")
+    public List<DataTO> getData() {
+        return dataSO.getData();
     }
 }

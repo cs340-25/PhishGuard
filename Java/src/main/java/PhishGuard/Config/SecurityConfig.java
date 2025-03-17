@@ -28,11 +28,10 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/verify/**").permitAll()
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/data/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/newUser/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
-                        .requestMatchers("/packets/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/detectionLogs/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()  // All other endpoints require authentication
                 )
                 .httpBasic(withDefaults());
