@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 //sets the path to /admin
 @RequestMapping("/admin")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdminController {
     @Autowired
     private UserSO userSO;

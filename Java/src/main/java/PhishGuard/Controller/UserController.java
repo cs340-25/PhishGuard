@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 //sets path to /user
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     @Autowired
     private UserSO userSO;
