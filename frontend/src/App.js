@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import NewUserForm from './components/newUser';
 import LogInForm from './components/logIn';
 import HomePage from './components/home'; 
+import AdminDashboard from './components/adminDash';
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('Home');
@@ -17,6 +18,8 @@ function App() {
         return <NewUserForm />; 
       case 'LogIn': 
         return <LogInForm />; 
+      case 'AdminDash': 
+        return <AdminDashboard />; 
       default:
         return <HomePage />; 
     }
@@ -45,9 +48,9 @@ function App() {
               Create Account
           </button>
           <button
-            onClick={() => setActiveComponent('Monitor')}
+            onClick={() => setActiveComponent('AdminDash')}
             style={styles.smallButton}>
-              Monitor Network
+              Admin Dashboard 
             </button>
         </div> 
       </nav>

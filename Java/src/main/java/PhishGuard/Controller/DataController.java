@@ -22,6 +22,7 @@ public class DataController {
 
     //sets the path to /datas/userLogs and retrieves the normal logs for the signed in user
     @GetMapping("/userLogs")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<DataTO> getUserData() {
         //grabs authentication information for current user   
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
