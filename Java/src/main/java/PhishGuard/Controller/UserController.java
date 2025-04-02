@@ -3,6 +3,8 @@ package PhishGuard.Controller;
 import PhishGuard.SO.UserSO;
 import PhishGuard.TO.UserTO;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +59,12 @@ public class UserController {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getAll")
+    public List<UserTO> getAllUsers() {
+        return userSO.getUsers();
     }
 
     //sets path to /user/verify and the username and password are values in the path after /verify

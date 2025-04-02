@@ -34,7 +34,7 @@ public class DataDAO {
             public DataTO mapRow(ResultSet rs, int rowNum) throws SQLException {
                 //sets the values of the data based on the values in each column in the database
                 DataTO data = new DataTO();
-                data.setEmail(rs.getString("email"));
+                data.setEmail(rs.getString("email_contents"));
                 data.setResult(rs.getBoolean("result"));
                 data.setTimestamp(rs.getString("timestamp"));
                 data.setUsername(rs.getString("username"));
@@ -55,7 +55,7 @@ public class DataDAO {
             public DataTO mapRow(ResultSet rs, int rowNum) throws SQLException {
                 //sets the values of the data based on the values in each column in the database
                 DataTO data = new DataTO();
-                data.setEmail(rs.getString("email"));
+                data.setEmail(rs.getString("email_contents"));
                 data.setResult(rs.getBoolean("result"));
                 data.setTimestamp(rs.getString("timestamp"));
                 data.setUsername(rs.getString("username"));

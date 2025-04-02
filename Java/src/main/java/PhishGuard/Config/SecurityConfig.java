@@ -22,6 +22,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors(withDefaults())
                 .csrf(csrf -> csrf.disable()) //make sure to remove later
                 //makes sure all endpoints can only be hit if the user has the correct role
                 .authorizeHttpRequests((requests) -> requests
