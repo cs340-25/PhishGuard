@@ -23,4 +23,8 @@ public class DataSO {
         return dataDAO.getUserData(username);
     }
 
+    public void addDataLog(DataTO data) {
+        dataDAO.insertData(data);
+    }
+
 }

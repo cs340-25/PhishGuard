@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -66,5 +67,16 @@ public class DataDAO {
         //the username and sql are combined here rather than just in the sql string to prevent sql injections
         return template.query(sql, mapper, username);
     }
+
+    public void insertData(DataTO data) {
+        // SQL to insert a new log entry into the database
+        String sql = "INSERT INTO data_logs (email_contents, result, timestamp, username) VALUES (?, ?, ?, ?)";
+    
+        int resultInt = data.getResult() ? 1 : 0;
+        Timestamp timestamp = Timestamp.valueOf(data.getTimestamp());
+        // Execute the update query
+        template.update(sql, data.getEmail(), resultInt, timestamp, data.getUsername());
+    }
+    
 
 }

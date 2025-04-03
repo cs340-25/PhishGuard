@@ -5,6 +5,7 @@ import PhishGuard.SO.DataSO;
 import PhishGuard.TO.DataTO;
 import PhishGuard.TO.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,4 +48,10 @@ public class AdminController {
     public List<DataTO> getData() {
         return dataSO.getData();
     }
-}
+
+    @PostMapping("/addLog")
+    public ResponseEntity<String> addDataLog(@RequestBody DataTO data) {
+        dataSO.addDataLog(data);
+        return ResponseEntity.ok("Data log inserted successfully");
+    }
+} 
