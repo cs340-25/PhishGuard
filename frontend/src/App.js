@@ -1,10 +1,12 @@
 //Root Frontend element to render all components. 
 
 import React, { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; 
 import NewUserForm from './components/newUser';
 import LogInForm from './components/logIn';
 import HomePage from './components/HomePage'; 
 import AdminDashboard from './components/adminDash';
+import Inbox from './components/inbox'; 
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('Home');
@@ -26,6 +28,7 @@ function App() {
   };
   // buttons along top bar 
   return (
+   <Router>
     <div style={styles.app}>
       <nav style={styles.nav}>
         <div style={styles.leftNav}>
@@ -54,8 +57,15 @@ function App() {
             </button>
         </div> 
       </nav>
-      <main style={styles.main}>{renderComponent()}</main>
+      <main style={styles.main}>
+        <Routes>
+          <Route path = "/inbox" element = {<Inbox />} />
+          <Route path = "*" element = {renderComponent()} />
+        </Routes>
+        {renderComponent()}
+      </main>
     </div>
+   </Router> 
   );
 }
 
