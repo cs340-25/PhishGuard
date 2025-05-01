@@ -1,8 +1,12 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const { google } = require('googleapis');
 const cors = require('cors');
-require('dotenv').config();
+
+console.log("CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
+console.log("REDIRECT_URI:", process.env.REDIRECT_URI);
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;

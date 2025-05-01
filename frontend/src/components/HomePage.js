@@ -1,8 +1,8 @@
 // HomePage.js
 import React from 'react';
 
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const REDIRECT_URI = process.env.REDIRECT_URI;
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
 const HomePage = () => {
   const startGoogleOAuth = () => {
