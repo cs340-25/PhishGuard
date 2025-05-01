@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import NewUserForm from './components/newUser';
 import LogInForm from './components/logIn';
-import HomePage from './components/home'; 
+import HomePage from './components/HomePage'; 
 import AdminDashboard from './components/adminDash';
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
           <button 
             onClick = {() => setActiveComponent('Create Account')} 
             style={styles.smallButton}>
-              Create Account Yay!
+              Create Account
           </button>
           <button
             onClick={() => setActiveComponent('AdminDash')}
