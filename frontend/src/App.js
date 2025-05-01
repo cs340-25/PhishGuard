@@ -45,7 +45,7 @@ function App() {
           <button 
             onClick = {() => setActiveComponent('Create Account')} 
             style={styles.smallButton}>
-              Create Account
+              Create Account Yay!
           </button>
           <button
             onClick={() => setActiveComponent('AdminDash')}
