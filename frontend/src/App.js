@@ -62,7 +62,6 @@ function App() {
           <Route path = "/inbox" element = {<Inbox />} />
           <Route path = "*" element = {renderComponent()} />
         </Routes>
-        {renderComponent()}
       </main>
     </div>
    </Router> 
