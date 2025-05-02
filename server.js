@@ -14,6 +14,7 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+let cachedMessages = [];
 
 const app = express();
 app.use(cors());
@@ -51,7 +52,6 @@ app.get('/auth/google', async (req, res) => {
       })
     );
     
-    let cachedMessages = []; 
     cachedMessages = detailedMessages; 
 
     res.redirect('http://localhost:3000/inbox'); 
