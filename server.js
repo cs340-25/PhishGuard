@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const { google } = require('googleapis');
 const cors = require('cors');
+const cheerio = require('cheerio'); 
 
 console.log("CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
 console.log("CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
@@ -64,8 +65,22 @@ app.get('/auth/google', async (req, res) => {
 function extractBody(payload) {
   if (!payload) return ''; 
   const parts = payload.parts || [payload]; 
-  const part = parts.find(p => p.mimeType === 'text/plain'); 
-  return Buffer.from(part?.body?.data || '', 'base64').toString('utf8'); 
+
+  const plainPart = parts.find(p=>p.mimeType === 'text/plain');
+  if(plainPart && plainPart.body && plainPart.body.data) 
+  {
+    return Buffer.from(plainPart.body.data, 'base64').toString('utf-8'); 
+  }
+
+  const htmlPart = parts.find(p => p.mimeType === 'text/html');
+  if (htmlPart && htmlPart.body && htmlPart.body.data)
+  {
+    const html = Buffer.from(htmlPart.body.data, 'base64').toString('utf-8'); 
+    const $ = cheerio.load(html); 
+    return $('body').text().replace(/\s+/g, '').trim();  
+  } 
+  
+  return ''; 
 }
 
 app.get('/inbox', (req, res) => {

@@ -11,6 +11,23 @@ const Inbox = () => {
       .catch(err => console.error(err));
   }, []);
 
+  const handleCheckPhishing = async () => {
+    try{
+      const response = await axios.post('http://localhost:8000/predict', {
+        sender: selected.from, 
+        receiver: selected.to, 
+        subject: selected.subject, 
+        body: selected.body
+      }); 
+      alert(response.data.prediction
+        ? 'This email may be a phsishing attempt!'
+        : 'This email appears safe.');
+    } catch(error) {
+      console.error("Error contacting ML model:", error);
+      alert('Failed to check email. Try again'); 
+    }
+  }; 
+
   return (
     <div style={{ padding: '2rem' }}>
       <h2>Inbox</h2>
@@ -29,7 +46,9 @@ const Inbox = () => {
             <p><strong>From:</strong> {selected.from}</p>
             <p><strong>To:</strong> {selected.to}</p>
             <p>{selected.body}</p>
-            {/* Add button to send this to your ML model */}
+            <button onClick={handleCheckPhishing} style={{marginTop: '1rem'}}>
+              Check for Phishing!
+            </button>
           </div>
         )}
       </div>

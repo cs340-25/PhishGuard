@@ -1,15 +1,30 @@
 //Root Frontend element to render all components. 
 
 import React, { useState } from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; 
+import {BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom'; 
 import NewUserForm from './components/newUser';
 import LogInForm from './components/logIn';
 import HomePage from './components/HomePage'; 
 import AdminDashboard from './components/adminDash';
 import Inbox from './components/inbox'; 
 
+function AppWrapper()
+{
+  return (
+    <Router>
+      <App />
+    </Router>
+  )
+}
+
 function App() {
   const [activeComponent, setActiveComponent] = useState('Home');
+  const navigate = useNavigate(); 
+
+  const handleNavClick = (component) => {
+    setActiveComponent(component); 
+    navigate('/'); 
+  }; 
 
   // Switching components on button press. 
   const renderComponent = () => {
@@ -28,12 +43,11 @@ function App() {
   };
   // buttons along top bar 
   return (
-   <Router>
     <div style={styles.app}>
       <nav style={styles.nav}>
         <div style={styles.leftNav}>
           <button
-            onClick={() => setActiveComponent('Home')}
+            onClick={() => handleNavClick('Home')}
             style={styles.smallButton}
           >
             Home
@@ -41,17 +55,17 @@ function App() {
         </div>
         <div style={styles.rightNav}>
           <button
-            onClick = {() => setActiveComponent('LogIn')}
+            onClick = {() => handleNavClick('LogIn')}
             style = {styles.smallButton}> 
               Log In
           </button> 
           <button 
-            onClick = {() => setActiveComponent('Create Account')} 
+            onClick = {() => handleNavClick('Create Account')} 
             style={styles.smallButton}>
               Create Account
           </button>
           <button
-            onClick={() => setActiveComponent('AdminDash')}
+            onClick={() => handleNavClick('AdminDash')}
             style={styles.smallButton}>
               Admin Dashboard 
             </button>
@@ -64,7 +78,6 @@ function App() {
         </Routes>
       </main>
     </div>
-   </Router> 
   );
 }
 
@@ -110,4 +123,4 @@ const styles = {
   },
 };
 
-export default App;
+export default AppWrapper;
