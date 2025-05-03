@@ -20,7 +20,7 @@ const Inbox = () => {
         body: selected.body
       }); 
       alert(response.data.prediction
-        ? 'This email may be a phsishing attempt!'
+        ? 'This email may be a phishing attempt!'
         : 'This email appears safe.');
     } catch(error) {
       console.error("Error contacting ML model:", error);
