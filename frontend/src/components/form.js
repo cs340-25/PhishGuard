@@ -5,7 +5,7 @@ import axios from 'axios';
 const EmailScanForm = () => {
   const [formData, setFormData] = useState({
     sender: '',
-    receiver: '',
+    receiver: localStorage.getItem('email') || '',
     subject: '',
     body: '',
   });

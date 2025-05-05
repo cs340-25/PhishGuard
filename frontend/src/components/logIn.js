@@ -23,6 +23,12 @@ const LogInForm = () => {
         localStorage.setItem('username', username); 
         localStorage.setItem('password', password); 
 
+        /*const userRes = await axios.get('http://localhost:8080/getUser'); 
+
+        if (userRes.data?.email) {
+          localStorage.setItem('email', userRes.data.email); 
+        }*/ 
+
       } else {
         setLoginStatus("error");
       }
