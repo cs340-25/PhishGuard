@@ -27,7 +27,7 @@ const LogInForm = () => {
 
         if (userRes.data?.email) {
           localStorage.setItem('email', userRes.data.email); 
-        }*/ 
+        } */ 
 
       } else {
         setLoginStatus("error");
