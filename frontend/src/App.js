@@ -5,8 +5,9 @@ import {BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-
 import NewUserForm from './components/newUser';
 import LogInForm from './components/logIn';
 import HomePage from './components/HomePage'; 
-import AdminDashboard from './components/adminDash';
+//import AdminDashboard from './components/adminDash';
 import Inbox from './components/inbox'; 
+import EmailScanForm from './components/form';
 
 function AppWrapper()
 {
@@ -35,8 +36,8 @@ function App() {
         return <NewUserForm />; 
       case 'LogIn': 
         return <LogInForm />; 
-      case 'AdminDash': 
-        return <AdminDashboard />; 
+      case 'EmailForm': 
+        return <EmailScanForm />; 
       default:
         return <HomePage />; 
     }
@@ -65,9 +66,9 @@ function App() {
               Create Account
           </button>
           <button
-            onClick={() => handleNavClick('AdminDash')}
+            onClick={() => handleNavClick('EmailForm')}
             style={styles.smallButton}>
-              Admin Dashboard 
+              Email Form 
             </button>
         </div> 
       </nav>

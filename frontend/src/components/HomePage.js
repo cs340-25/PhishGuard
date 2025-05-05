@@ -25,17 +25,31 @@ const HomePage = () => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <h1 style={styles.title}>CS340 Project</h1>
-        <p style={styles.subtitle}>PhishGuard</p>
+        <h1 style={styles.title}>PhishGuard</h1>
+        <p style={styles.subtitle}>Machine Learning Enhanced Scam Detection</p>
       </header>
-      <button onClick={startGoogleOAuth} style={styles.downloadButton}>
-        Sign in with Google
+      <button onClick={startGoogleOAuth} style={styles.googleButton}>
+        <img
+          src = "https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+          alt = "Google"
+          style = {styles.googleIcon}
+        />
+        <span style={styles.buttonText}>Sign in with Google</span>
       </button>
       <main style={styles.main}>
         <section style={styles.section}>
-          <h2>Our Features</h2>
+          <h2>Preventing Phishing</h2>
           <p>
-            Our website will eventually boast a ML algorithm to detect malicious emails!
+            Have a suspicious email? Enter it here and get a second opinion!    
+          </p>
+          <ol style = {{paddingLeft: '20px'}}>
+            <li>Sign in with your Google account.</li>
+            <li>View your inbox and select an email.</li>
+            <li>Click "Scan Email" and get feedback on it's nature.</li>
+            <li>Review the result and take appropriate action!</li>
+          </ol>
+          <p>
+            If you don't want to connect your Google account, you can also create an account here and use our manual form!
           </p>
         </section>
       </main>
@@ -103,6 +117,28 @@ const styles = { container: {
     textDecoration: 'none',
     color: 'white',
     fontWeight: 'bold',
-  },};
+  },
+  googleButton: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    color: '#555',
+    padding: '10px 15px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    marginTop: '20px',
+  },
+  googleIcon: {
+    width: '20px',
+    height: '20px',
+    marginRight: '10px',
+  },
+  buttonText: {
+    fontWeight: '500',
+  }
+};
 
 export default HomePage;

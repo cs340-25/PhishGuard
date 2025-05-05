@@ -1,16 +1,20 @@
+// Create account page 
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// User class
 const NewUserForm = () => {
   const [user, setUser] = useState({
     username: '',
     email: '',
     password: '',
-    role: 'USER' // Default role
+    role: 'USER'
   });
 
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
 
+  // Reading in text input 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser((prevUser) => ({
@@ -19,9 +23,11 @@ const NewUserForm = () => {
     }));
   };
 
+  // function called when submit button pressed
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Hits java endpoint to add user to database 
     axios
       .post('http://localhost:8080/newUser/create', user, {
         headers: {
@@ -29,18 +35,21 @@ const NewUserForm = () => {
         },
       })
       .then((response) => {
+        // giving confirmation message and storing user data for monitor 
         console.log('User created successfully:', response.data);
-        setSuccessMessage('Account created successfully!');
+        setSuccessMessage('Account created successfully!'); // Set success message
         localStorage.setItem('username', user.username); 
+        localStorage.setItem('email', user.email); 
         localStorage.setItem('password', user.password); 
       })
       .catch((error) => {
         console.error('Error creating user:', error);
-        setSuccessMessage('Failed to create account. Please try again.');
+        setSuccessMessage('Failed to create account. Please try again.'); // Error message
       });
   };
 
   return (
+    // Form for inputting data
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "50px" }}>
       <h2>Create a New User</h2>
       <form
@@ -66,7 +75,6 @@ const NewUserForm = () => {
           required
           style={{ padding: "8px", marginBottom: "20px" }}
         />
-
         <label htmlFor="email" style={{ marginBottom: "10px" }}>
           Email:
         </label>
@@ -79,7 +87,6 @@ const NewUserForm = () => {
           required
           style={{ padding: "8px", marginBottom: "20px" }}
         />
-
         <label htmlFor="password" style={{ marginBottom: "10px" }}>
           Password:
         </label>
@@ -92,22 +99,6 @@ const NewUserForm = () => {
           required
           style={{ padding: "8px", marginBottom: "20px" }}
         />
-
-        {/* Role Dropdown */}
-        <label htmlFor="role" style={{ marginBottom: "10px" }}>
-          Role:
-        </label>
-        <select
-          name="role"
-          value={user.role}
-          onChange={handleChange}
-          required
-          style={{ padding: "8px", marginBottom: "20px" }}
-        >
-          <option value="USER">USER</option>
-          <option value="ADMIN">ADMIN</option>
-        </select>
-
         <button
           type="submit"
           style={{
